@@ -1,0 +1,9 @@
+{
+  "name": "ポイント達成計算",
+  "short_name": "ポイント計算",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fb",
+  "theme_color": "#2563eb",
+  "lang": "ja"
+}
