@@ -1,48 +1,7 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#2563eb">
-  <meta name="description" content="14日間で1500ポイントを集めるための残り必要ポイント計算PWA">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <title>ポイント達成計算</title>
-</head>
-<body>
-<div id="lockScreen" class="lock-screen">
-  <section class="lock-card">
-    <h1>🔒 ポイント達成計算</h1>
-    <p>閲覧するにはパスワードを入力してください。</p>
-    <form id="passwordForm">
-      <input id="passwordInput" type="password" autocomplete="current-password" placeholder="パスワード" autofocus>
-      <button type="submit">ロック解除</button>
-      <p id="passwordError" class="password-error" aria-live="polite"></p>
-    </form>
-  </section>
-</div>
-
-<div id="appContent" class="hidden">
-<main class="container">
-  <header>
-    <div class="header-row"><h1>ポイント達成計算</h1><button id="lockButton" class="lock-button" type="button">🔒 ロック</button></div>
-    <p>14日間・合計1,500ポイント、1日上限180ポイント</p>
-  </header>
-  <section class="card">
-    <label>目標ポイント<input id="goal" type="number" min="0" value="1500"></label>
-    <label>1日の上限ポイント<input id="dailyLimit" type="number" min="0" value="180"></label>
-    <label>現在のポイント<input id="current" type="number" min="0" value="0"></label>
-    <label>残り日数<input id="days" type="number" min="0" value="14"></label>
-    <label>残り時間<div class="time-row"><input id="hours" type="number" min="0" max="23" value="0" aria-label="残り時間"><span>時間</span><input id="minutes" type="number" min="0" max="59" value="0" aria-label="残り分"><span>分</span></div></label>
-    <button id="calc">計算する</button><button id="reset" class="secondary">リセット</button>
-  </section>
-  <section id="result" class="card result" aria-live="polite">
-    <h2>計算結果</h2><div class="big" id="required">—</div><p>残り日数で必要な平均ポイント／日</p>
-    <div class="grid"><div><span>残り必要ポイント</span><strong id="remaining">—</strong></div><div><span>1日上限</span><strong id="limitView">—</strong></div><div><span>必要ポイント／時間</span><strong id="perHour">—</strong></div><div><span>達成可能上限</span><strong id="capacity">—</strong></div></div>
-    <p id="message" class="message"></p>
-  </section>
-  <section class="card note"><h2>使い方</h2><p>「残り日数」は、これからポイントを獲得できる日数を入力してください。残り時間は当日の残り時間として参考表示に使用します。</p><p>計算は、残り必要ポイント ÷ 残り日数で「1日あたり必要な平均ポイント」を算出します。</p></section>
-</main></div>
-<script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#2563eb"><meta name="description" content="14日間で1500ポイントを集めるための残り必要ポイント計算PWA"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>ポイント達成計算</title></head><body>
+<div id="lockScreen" class="lock-screen"><section class="lock-card"><h1>🔒 ポイント達成計算</h1><p>閲覧するにはパスワードを入力してください。</p><form id="passwordForm"><input id="passwordInput" type="password" autocomplete="current-password" placeholder="パスワード" autofocus><button type="submit">ロック解除</button><p id="passwordError" class="password-error"></p></form><button id="adminButton" class="admin-link" type="button">⚙️ パスワード管理</button></section></div>
+<div id="adminScreen" class="lock-screen hidden"><section class="lock-card"><h1>⚙️ パスワード管理</h1><div id="adminLogin"><p>現在のパスワードを入力してください。</p><input id="adminPasswordInput" type="password" placeholder="現在のパスワード"><button id="adminLoginButton" type="button">管理画面を開く</button></div><div id="adminPanel" class="hidden"><p>現在の有効期限：<strong id="expiryStatus">—</strong></p><label>新しいパスワード<input id="newPassword" type="password" placeholder="4文字以上"></label><label>新しいパスワード（確認）<input id="newPasswordConfirm" type="password" placeholder="もう一度入力"></label><label>有効期間（日）<input id="passwordDays" type="number" min="0" value="30"><small>0にすると無期限</small></label><button id="changePasswordButton" type="button">パスワードを変更</button></div><p id="adminError" class="password-error"></p><button id="adminClose" class="secondary" type="button">閉じる</button></section></div>
+<div id="appContent" class="hidden"><main class="container"><header><div class="header-row"><h1>ポイント達成計算</h1><button id="lockButton" class="lock-button" type="button">🔒 ロック</button></div><p>14日間・合計1,500ポイント、1日上限180ポイント</p></header>
+<section class="card"><label>目標ポイント<input id="goal" type="number" min="0" value="1500"></label><label>1日の上限ポイント<input id="dailyLimit" type="number" min="0" value="180"></label><label>現在のポイント<input id="current" type="number" min="0" value="0"></label><label>残り日数<input id="days" type="number" min="0" value="14"></label><label>残り時間<div class="time-row"><input id="hours" type="number" min="0" max="23" value="0"><span>時間</span><input id="minutes" type="number" min="0" max="59" value="0"><span>分</span></div></label><button id="calc">計算する</button><button id="reset" class="secondary">リセット</button></section>
+<section class="card result"><h2>計算結果</h2><div class="big" id="required">—</div><p>残り日数で必要な平均ポイント／日</p><div class="grid"><div><span>残り必要ポイント</span><strong id="remaining">—</strong></div><div><span>1日上限</span><strong id="limitView">—</strong></div><div><span>必要ポイント／時間</span><strong id="perHour">—</strong></div><div><span>達成可能上限</span><strong id="capacity">—</strong></div></div><p id="message" class="message"></p></section>
+<section class="card note"><h2>使い方</h2><p>「残り日数」は、これからポイントを獲得できる日数を入力してください。残り時間は当日の残り時間として参考表示に使用します。</p><p>残り必要ポイント ÷ 残り日数で「1日あたり必要な平均ポイント」を算出します。</p></section></main></div><script src="app.js"></script></body></html>
